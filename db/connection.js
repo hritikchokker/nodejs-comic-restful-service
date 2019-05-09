@@ -1,4 +1,4 @@
 const mongoose =require('mongoose');
-const url = require('./config');
-mongoose.connect(url.db);
+const mongodb = require('../utils/env');
+mongoose.connect(mongodb.db);
 module.exports = mongoose;
