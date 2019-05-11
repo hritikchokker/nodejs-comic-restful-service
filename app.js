@@ -1,14 +1,14 @@
 const express = require('express');
-const app = express();
 const bodyParser = require('body-parser');
+const app = express();
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
-app.use('/',require('./routes/projectroutes'));
-app.listen(process.env.PORT || 1234, (err) =>{
+app.use('/',require('./routes/approutes'));
+app.listen(process.env.PORT || 1234 ,(err) =>{
     if(err){
-        console.log('error starting server');
+        throw err;
     }
     else{
-        console.log('server started at 1234 port ...');
+        console.log('server started at port 1234 ');
     }
-});
+})

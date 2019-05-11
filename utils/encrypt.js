@@ -1,11 +1,11 @@
 const bcrypt = require('bcrypt');
-const encryptOperations = {
+const encryptionOperations = {
     salt: 10,
     encryptPassword(password){
         return bcrypt.hashSync(password, this.salt);
     },
-    compareHash(password,hashPwd){
-        return bcrypt.compareSync(password,hashPwd);
+    comparePassword(password){
+        return bcrypt.compareSync(password,hashpwd);
     }
 }
-module.exports = encryptOperations;
+module.exports = encryptionOperations;
