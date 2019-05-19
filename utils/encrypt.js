@@ -4,8 +4,8 @@ const encryptionOperations = {
     encryptPassword(password){
         return bcrypt.hashSync(password, this.salt);
     },
-    comparePassword(password){
-        return bcrypt.compareSync(password,hashpwd);
+    compareHash(password, hashpwd){
+        return bcrypt.compareSync(password, hashpwd);
     }
 }
 module.exports = encryptionOperations;

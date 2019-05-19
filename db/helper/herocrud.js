@@ -9,20 +9,21 @@ const heroOperations = {
                 response.status(200).json({message: 'record not added' })
             } else{
                 response.status(200).json({ message: 'record added' })
+                console.log('record added');
             }
         })
     },
     searchHero(heroObject,response){
         console.log(heroObject);
-        HeroProject.find({"name": heroObject}, (err,docs) =>{
+        HeroProject.find({ "name": heroObject }, (err,docs) =>{
             if(err){
                 response.status(500).json({message: 'error while searching'});
             }
             else{
-                response.status(200).json({message: 'hero found', record: docs});
-                console.log('himanshu',docs);
+                response.status(200).json({message: 'hero found', hero: heroObject , record: docs});
+                // console.log('himanshu', docs);
             }
-        })
+        }).collation( { locale: 'en', strength: 2 } );
     }
 }
 module.exports = heroOperations;
