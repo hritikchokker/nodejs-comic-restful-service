@@ -20,9 +20,13 @@ const heroOperations = {
                 response.status(500).json({message: 'error while searching'});
             }
             else{
+                if(docs.username === heroObject){
                 response.status(200).json({message: 'hero found', hero: heroObject , record: docs});
                 // console.log('himanshu', docs);
+            } else {
+                response.status(200).json({message: 'no hero found'});
             }
+        }
         }).collation( { locale: 'en', strength: 2 } );
     }
 }
