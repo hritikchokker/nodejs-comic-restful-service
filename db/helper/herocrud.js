@@ -15,19 +15,23 @@ const heroOperations = {
     },
     searchHero(heroObject,response){
         console.log(heroObject);
-        HeroProject.find({ "name": heroObject }, (err,docs) =>{
+        HeroProject.find({ "name": heroObject }, (err, docs) =>{
             if(err){
                 response.status(500).json({message: 'error while searching'});
             }
             else{
-                if(docs.username === heroObject){
+                if (docs[0].name.toLowerCase() == heroObject.toLowerCase()) {
                 response.status(200).json({message: 'hero found', hero: heroObject , record: docs});
-                // console.log('himanshu', docs);
+                // console.log('himanshu');
             } else {
+                console.log(docs[0].name+"   "+heroObject);
                 response.status(200).json({message: 'no hero found'});
-            }
+             } 
+             //else{
+            //     response.status(200).json({message: 'this does not work'});
+            // }
         }
-        }).collation( { locale: 'en', strength: 2 } );
+        }).collation( { locale: 'en', strength: 1 } );
     }
 }
 module.exports = heroOperations;
